@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+immutable: true
+metadata:
+  name: configmap
+data:
+  channel.name: "I "
+  channel.owner: "Kuberneres practice"

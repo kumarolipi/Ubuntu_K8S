@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: myjob
+spec:
+  completions: 5     # The desired number of successfully completd pods
+  parallelism: 5       # Number of pods to run concurrently
+  backoffLimit: 3      # Number of retries before considering a Job as failed
+  activeDeadlineSeconds: 20  # Maximum execution time for the Job in seconds
+  template:
+    metadata:
+      name: mypod
+    spec:
+      containers:
+      - name: myjob
+        image: kumarolipi/jenkins-docker:latest
+      restartPolicy: Never

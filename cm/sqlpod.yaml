@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysqlpod
+spec:
+  volumes:
+  - name: sqlcm
+    configMap:
+      name: sqlcm
+      items:
+        - key: my.cnf
+          path: my.cnf
+  containers:
+  - image: busybox
+    name: busybox
+    command: ["/bin/sh"]
+    args: ["-c", "sleep 600"]
+    env:
+    volumeMounts:
+    - name: sqlcm
+      mountPath: /mydata

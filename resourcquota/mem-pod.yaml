@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+  namespace: dev
+spec:
+  containers:
+  - image: nginx
+    name: mypod
+    resources:
+      limits:
+        memory: "300Mi"
+      requests:
+        memory: "50Mi"
