@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myweb 
+  name: myweb
 spec:
-  replicas: 4 
+  replicas: 1 
   selector:
     matchLabels:
       app: my-app
@@ -17,10 +17,3 @@ spec:
         image: kumarolipi/jenkins-docker:latest
         ports:
         - containerPort: 80
-        volumeMounts:
-        - name: my-app
-          mountPath: /usr/share/nginx/html
-      volumes:
-      - name: my-app
-        persistentVolumeClaim:
-          claimName: pvc

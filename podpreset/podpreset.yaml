@@ -1,0 +1,18 @@
+apiVersion: settings.k8s.io/v1alpha1
+kind: PodPreset
+metadata:
+  name: podpreset
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+  volumeMounts:
+  - mountPath: "/srv/nfs/kubedata/"
+    name: shared-volume
+  env:
+  - name: myapp
+    value: "this is podpreset demo"
+  volumes:
+  - name: shared-volume
+    emptyDir: {}
+
